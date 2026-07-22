@@ -377,7 +377,7 @@ export default function IntakeChat() {
         {messages.map((m, i) => (
           <div key={i} className={`chat-row ${m.from}`}>
             <div className="chat-bubble">
-              {m.image ? <img className="chat-img" src={m.image} alt="" /> : renderText(m.text)}
+              {m.image ? <img className="chat-img" src={m.image} alt="תמונה שצורפה לשיחה" /> : renderText(m.text)}
             </div>
           </div>
         ))}

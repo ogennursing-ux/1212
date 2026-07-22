@@ -261,8 +261,8 @@ function Header({ onLogout, onSettings, right }) {
   return (
     <header className="app-header">
       <div className="brand">
-        <span className="brand-mark">🗂️</span>
-        <span className="brand-name">תיק עובד זר</span>
+        <span className="brand-mark" aria-hidden="true">🗂️</span>
+        <h1 className="brand-name">תיק עובד זר</h1>
       </div>
       <div className="header-actions">
         {right}
@@ -328,7 +328,7 @@ function SettingsModal({ onClose }) {
       <div className="drawer tik-settings" onPointerDown={(e) => e.stopPropagation()}>
         <div className="drawer-head">
           <strong>⚙ הגדרות</strong>
-          <button className="icon-btn" onClick={onClose} aria-label="close">✕</button>
+          <button className="icon-btn" onClick={onClose} aria-label="סגור">✕</button>
         </div>
         <h3 style={{ margin: '4px 0 6px', fontSize: 15 }}>בינה מלאכותית — קריאת מסמכים ופענוח</h3>
         <p className="muted small">
@@ -500,7 +500,7 @@ function ContractsManager({ onClose }) {
       <div className="drawer tik-settings" onPointerDown={(e) => e.stopPropagation()}>
         <div className="drawer-head">
           <strong>📄 תבניות חוזה</strong>
-          <button className="icon-btn" onClick={onClose} aria-label="close">✕</button>
+          <button className="icon-btn" onClick={onClose} aria-label="סגור">✕</button>
         </div>
         <p className="muted small">
           העלה חוזה כ-<b>PDF</b> (תמקם את השדות על הדף — העיצוב נשמר ב-100%) או כ-<b>Word</b> ‏(.docx) עם סימונים
@@ -642,7 +642,7 @@ function ContractPicker({ worker, family, onClose, onBuiltin, onSigned }) {
       <div className="drawer tik-settings" onPointerDown={(e) => e.stopPropagation()}>
         <div className="drawer-head">
           <strong>📄 בחר חוזה להפקה</strong>
-          <button className="icon-btn" onClick={onClose} aria-label="close">✕</button>
+          <button className="icon-btn" onClick={onClose} aria-label="סגור">✕</button>
         </div>
         <ul className="tik-doc-list">
           {items && items.map((t) => (
@@ -768,7 +768,7 @@ function AgentInbox({ onClose, onImported }) {
       <div className="drawer tik-settings" onPointerDown={(e) => e.stopPropagation()}>
         <div className="drawer-head">
           <strong>📥 הגשות מהסוכן</strong>
-          <button className="icon-btn" onClick={onClose} aria-label="close">✕</button>
+          <button className="icon-btn" onClick={onClose} aria-label="סגור">✕</button>
         </div>
 
         <p className="muted small">הודעות מהסוכן (טלגרם/Base44) מגיעות לכאן דרך השרת. שלח/י לבוט הודעה או תמונה — והיא תופיע כאן לייבוא.</p>
@@ -963,7 +963,7 @@ function ChatTranscript({ sub, onClose }) {
               <div className="tik-thumbs">
                 {d.files.map((file, i) => (
                   <a key={i} href={file.dataUrl} download={file.name || 'doc'} className="tik-thumb" title={catLabel(file.category)}>
-                    <img src={file.dataUrl} alt="" />
+                    <img src={file.dataUrl} alt={catLabel(file.category) || 'מסמך מצורף'} />
                     <span className="tik-thumb-cap">{catLabel(file.category)}</span>
                   </a>
                 ))}
@@ -1176,7 +1176,7 @@ function Lightbox({ file, onClose }) {
       <div className="tik-lightbox" onPointerDown={(e) => e.stopPropagation()}>
         <div className="drawer-head">
           <strong>{catIcon(file.category)} {file.name}</strong>
-          <button className="icon-btn" onClick={onClose} aria-label="close">✕</button>
+          <button className="icon-btn" onClick={onClose} aria-label="סגור">✕</button>
         </div>
         {url && isImage && <img className="tik-lightbox-img" src={url} alt={file.name} />}
         {url && !isImage && (
@@ -1681,7 +1681,7 @@ function SignLinkModal({ link, who, onClose }) {
       <div className="drawer tik-settings" onPointerDown={(e) => e.stopPropagation()}>
         <div className="drawer-head">
           <strong>✍️ החוזה נשלח לחתימה</strong>
-          <button className="icon-btn" onClick={onClose} aria-label="close">✕</button>
+          <button className="icon-btn" onClick={onClose} aria-label="סגור">✕</button>
         </div>
         <p className="muted small">שלח את הקישור לעובד/מעסיק. אחרי החתימה, העותק החתום יישמר במערכת החתימות (עם תיעוד).</p>
         <input className="text-input" dir="ltr" readOnly value={link} onFocus={(e) => e.target.select()} style={{ marginTop: 8 }} />
@@ -1918,7 +1918,7 @@ function SmartImportModal({ onClose, onOpenWorker, onOpenFamily, onReload }) {
               <div className="tik-thumbs">
                 {images.map((im, i) => (
                   <div key={i} className="tik-thumb">
-                    <img src={im.url} alt="" />
+                    <img src={im.url} alt={`תמונה מצורפת ${i + 1}`} />
                     <button className="tik-thumb-x" onClick={() => removeImage(i)} title="הסר">✕</button>
                   </div>
                 ))}
@@ -2187,7 +2187,7 @@ function OfficeChat({ onClose, onOpenFamily, onReload }) {
       <div className="chat-body" ref={scroller}>
         {messages.map((m, i) => (
           <div key={i} className={`chat-row ${m.from}`}>
-            <div className="chat-bubble">{m.image ? <img className="chat-img" src={m.image} alt="" /> : chatText(m.text)}</div>
+            <div className="chat-bubble">{m.image ? <img className="chat-img" src={m.image} alt="תמונה שצורפה לשיחה" /> : chatText(m.text)}</div>
           </div>
         ))}
         {typing && (

@@ -17,8 +17,14 @@
     />
   </head>
   <body>
-    <div id="root"></div>
+    <a href="#root" class="skip-link">דילוג לתוכן הראשי</a>
+    <div id="root" tabindex="-1"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <!-- תפריט נגישות (OpenNagish) — עמידה בתקן ישראלי 5568 ובתקנות הנגישות -->
+    <script>
+      window.OpenNagishConfig = { position: 'bottom-left', lang: 'he' };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/open-nagish@latest/dist/open-nagish.min.js" defer></script>
     <!-- Always load the newest deploy: if the running app's JS differs from what's
          served now, reload once. Keeps a single plain link always up to date. -->
     <script>
