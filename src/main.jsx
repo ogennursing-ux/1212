@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import TikApp from './TikApp.jsx';
 import IntakeChat from './IntakeChat.jsx';
 import CasesBoard from './CasesBoard.jsx';
+import SignFields from './SignFields.jsx';
 import './index.css';
 
 document.documentElement.lang = 'he';
@@ -15,9 +16,10 @@ document.documentElement.dir = 'rtl';
 const route = location.hash.replace(/^#\/?/, '').toLowerCase();
 const isChat = route.startsWith('chat');
 const isBoard = route.startsWith('board');
+const isSignFields = route.startsWith('signfields');
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    {isChat ? <IntakeChat /> : isBoard ? <CasesBoard /> : <TikApp />}
+    {isChat ? <IntakeChat /> : isSignFields ? <SignFields /> : isBoard ? <CasesBoard /> : <TikApp />}
   </React.StrictMode>,
 );
