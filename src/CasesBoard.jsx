@@ -20,10 +20,10 @@ function Login({ onIn }) {
       <form className="board-login-card" onSubmit={submit}>
         <h2>📁 מערכת החוזים</h2>
         <p className="muted">כניסה עם פרטי המשרד.</p>
-        <label className="field-label">שם משתמש</label>
-        <input className="text-input" value={user} autoFocus onChange={(e) => setUser(e.target.value)} />
-        <label className="field-label" style={{ marginTop: 10 }}>סיסמה</label>
-        <input className="text-input" type="password" value={pass} onChange={(e) => setPass(e.target.value)} />
+        <label className="field-label" htmlFor="board-login-user">שם משתמש</label>
+        <input id="board-login-user" className="text-input" autoComplete="username" value={user} autoFocus onChange={(e) => setUser(e.target.value)} />
+        <label className="field-label" htmlFor="board-login-pass" style={{ marginTop: 10 }}>סיסמה</label>
+        <input id="board-login-pass" className="text-input" type="password" autoComplete="current-password" value={pass} onChange={(e) => setPass(e.target.value)} />
         {err && <p className="login-error">שם משתמש או סיסמה שגויים</p>}
         <button className="btn-primary full" type="submit" style={{ marginTop: 14 }}>התחבר</button>
       </form>
@@ -171,7 +171,7 @@ export default function CasesBoard() {
         ))}
       </div>
       <div className="board-search">
-        <input className="text-input" placeholder="🔍 חיפוש לפי שם / דרכון / טלפון…" value={q} onChange={(e) => setQ(e.target.value)} />
+        <input className="text-input" aria-label="חיפוש לפי שם, דרכון או טלפון" placeholder="🔍 חיפוש לפי שם / דרכון / טלפון…" value={q} onChange={(e) => setQ(e.target.value)} />
         <button className="board-toapp" onClick={() => { location.hash = ''; location.reload(); }}>המשרד המלא ←</button>
       </div>
 
@@ -191,7 +191,7 @@ export default function CasesBoard() {
         {shown.map((c) => <Card key={c.id} c={c} onCreate={onCreate} busy={busyId === c.id} />)}
       </div>
 
-      <div className="board-legal"><a href="privacy.html" target="_blank" rel="noreferrer">🔒 מדיניות פרטיות ותנאי שימוש</a></div>
+      <div className="board-legal"><a href="privacy.html" target="_blank" rel="noreferrer">🔒 מדיניות פרטיות ותנאי שימוש</a>{' · '}<a href="accessibility.html" target="_blank" rel="noreferrer">♿ הצהרת נגישות</a></div>
     </div>
   );
 }

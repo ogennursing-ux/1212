@@ -430,10 +430,10 @@ function Gate({ onEnter }) {
         <form className="card login-card" onSubmit={submit}>
           <h2>כניסה למערכת תיקי עובדים</h2>
           <p className="muted">מערכת עצמאית לניהול מסמכי עובדים זרים — דרכון, אשרה, היתר ועוד.</p>
-          <label className="field-label">שם משתמש</label>
-          <input className="text-input" value={user} autoFocus onChange={(e) => setUser(e.target.value)} />
-          <label className="field-label" style={{ marginTop: 10 }}>סיסמה</label>
-          <input className="text-input" type="password" value={pass} onChange={(e) => setPass(e.target.value)} />
+          <label className="field-label" htmlFor="tik-login-user">שם משתמש</label>
+          <input id="tik-login-user" className="text-input" autoComplete="username" value={user} autoFocus onChange={(e) => setUser(e.target.value)} />
+          <label className="field-label" htmlFor="tik-login-pass" style={{ marginTop: 10 }}>סיסמה</label>
+          <input id="tik-login-pass" className="text-input" type="password" autoComplete="current-password" value={pass} onChange={(e) => setPass(e.target.value)} />
           {error && <p className="login-error">שם משתמש או סיסמה שגויים</p>}
           <button className="btn-primary full" type="submit" style={{ marginTop: 14 }}>התחבר</button>
         </form>

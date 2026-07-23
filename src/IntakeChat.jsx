@@ -429,6 +429,7 @@ export default function IntakeChat() {
           <div className="chat-input-text">
             <input
               className="chat-text"
+              aria-label={tr('placeholder')}
               placeholder={tr('placeholder')}
               value={input}
               onChange={(e) => setInput(e.target.value)}
@@ -453,7 +454,7 @@ export default function IntakeChat() {
         <div className="chat-done">
           <a className="btn-primary full" href={PAYMENT_LINK} target="_blank" rel="noreferrer">💳 מעבר לתשלום המאובטח</a>
           <div className="chat-coupon">
-            <input className="chat-text" placeholder={COUPON_PLACEHOLDER} value={couponInput}
+            <input className="chat-text" aria-label={COUPON_PLACEHOLDER} placeholder={COUPON_PLACEHOLDER} value={couponInput}
               onChange={(e) => { setCouponInput(e.target.value); setCouponMsg(''); }}
               onKeyDown={(e) => { if (e.key === 'Enter') applyCoupon(); }} />
             <button className="chat-send" onClick={applyCoupon} disabled={!couponInput.trim()}>אישור</button>
@@ -466,6 +467,8 @@ export default function IntakeChat() {
       )}
       <div className="chat-legal">
         <a href="privacy.html" target="_blank" rel="noreferrer">🔒 מדיניות פרטיות ותנאי שימוש</a>
+        {' · '}
+        <a href="accessibility.html" target="_blank" rel="noreferrer">♿ הצהרת נגישות</a>
       </div>
     </div>
   );
