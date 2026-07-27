@@ -4,6 +4,7 @@ import TikApp from './TikApp.jsx';
 import IntakeChat from './IntakeChat.jsx';
 import CasesBoard from './CasesBoard.jsx';
 import SignFields from './SignFields.jsx';
+import RegistryApp from './RegistryApp.jsx';
 import './index.css';
 
 document.documentElement.lang = 'he';
@@ -17,9 +18,14 @@ const route = location.hash.replace(/^#\/?/, '').toLowerCase();
 const isChat = route.startsWith('chat');
 const isBoard = route.startsWith('board');
 const isSignFields = route.startsWith('signfields');
+const isRegistry = route.startsWith('registry');
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    {isChat ? <IntakeChat /> : isSignFields ? <SignFields /> : isBoard ? <CasesBoard /> : <TikApp />}
+    {isChat ? <IntakeChat />
+      : isSignFields ? <SignFields />
+      : isRegistry ? <RegistryApp />
+      : isBoard ? <CasesBoard />
+      : <TikApp />}
   </React.StrictMode>,
 );
