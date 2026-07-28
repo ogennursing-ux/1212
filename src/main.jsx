@@ -6,6 +6,7 @@ import CasesBoard from './CasesBoard.jsx';
 import SignFields from './SignFields.jsx';
 import RegistryApp from './RegistryApp.jsx';
 import ReportPage from './ReportPage.jsx';
+import Invoicing from './Invoicing.jsx';
 import './index.css';
 
 document.documentElement.lang = 'he';
@@ -16,6 +17,7 @@ document.documentElement.dir = 'rtl';
 //   …/#board         → the cases control room (office login)
 //   …/#registry      → the source registry (families, workers, renewals)
 //   …/#report/<key>  → one report, in its own browser tab
+//   …/#invoices      → the tax-documents desk (receipts & invoices)
 //   anything else    → the full office app (TikApp)
 //
 // Only the first segment chooses the app; everything after it is that app's
@@ -34,6 +36,7 @@ function Shell() {
   if (at === 'chat') return <IntakeChat />;
   if (at === 'signfields') return <SignFields />;
   if (at === 'report') return <ReportPage />;
+  if (at === 'invoices') return <Invoicing />;
   if (at === 'registry') return <RegistryApp />;
   if (at === 'board') return <CasesBoard />;
   return <TikApp />;
