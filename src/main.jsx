@@ -7,6 +7,7 @@ import SignFields from './SignFields.jsx';
 import RegistryApp from './RegistryApp.jsx';
 import ReportPage from './ReportPage.jsx';
 import Invoicing from './Invoicing.jsx';
+import ManotDesk from './ManotDesk.jsx';
 import './index.css';
 
 document.documentElement.lang = 'he';
@@ -40,6 +41,7 @@ function Shell() {
   if (at === 'signfields') return <SignFields />;
   if (at === 'report') return <ReportPage />;
   if (at === 'invoices') return <Invoicing />;
+  if (at === 'manot') return <ManotDesk />;
   if (at === 'registry') return <RegistryApp />;
   if (at === 'board') return <CasesBoard />;
   return <TikApp />;
