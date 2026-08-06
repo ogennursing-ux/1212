@@ -12,6 +12,7 @@ import AssistantDesk from './AssistantDesk.jsx';
 import ContractTemplates from './ContractTemplates.jsx';
 import QualityDesk from './QualityDesk.jsx';
 import AutoFileDesk from './AutoFileDesk.jsx';
+import BrandBar from './BrandBar.jsx';
 import './index.css';
 
 document.documentElement.lang = 'he';
@@ -33,14 +34,7 @@ document.documentElement.setAttribute('data-app', 'office');
 // registry switches apps on the spot, with no page reload.
 const section = () => location.hash.replace(/^#\/?/, '').toLowerCase().split(/[/?]/)[0] || '';
 
-function Shell() {
-  const [at, setAt] = useState(section);
-  useEffect(() => {
-    const onHash = () => setAt(section());
-    window.addEventListener('hashchange', onHash);
-    return () => window.removeEventListener('hashchange', onHash);
-  }, []);
-
+function pick(at) {
   if (at === 'chat') return <IntakeChat />;
   if (at === 'signfields') return <SignFields />;
   if (at === 'report') return <ReportPage />;
@@ -53,6 +47,21 @@ function Shell() {
   if (at === 'registry') return <RegistryApp />;
   if (at === 'board') return <CasesBoard />;
   return <TikApp />;
+}
+
+function Shell() {
+  const [at, setAt] = useState(section);
+  useEffect(() => {
+    const onHash = () => setAt(section());
+    window.addEventListener('hashchange', onHash);
+    return () => window.removeEventListener('hashchange', onHash);
+  }, []);
+
+  const view = pick(at);
+  // The public customer chat stays unbranded; every office screen gets the
+  // "ניהול בקליק" logo bar on top.
+  if (at === 'chat') return view;
+  return <><BrandBar />{view}</>;
 }
 
 ReactDOM.createRoot(document.getElementById('root')).render(
