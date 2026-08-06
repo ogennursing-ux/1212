@@ -11,6 +11,7 @@ import ManotDesk from './ManotDesk.jsx';
 import AssistantDesk from './AssistantDesk.jsx';
 import ContractTemplates from './ContractTemplates.jsx';
 import QualityDesk from './QualityDesk.jsx';
+import AutoFileDesk from './AutoFileDesk.jsx';
 import './index.css';
 
 document.documentElement.lang = 'he';
@@ -48,6 +49,7 @@ function Shell() {
   if (at === 'assistant') return <AssistantDesk />;
   if (at === 'templates') return <ContractTemplates />;
   if (at === 'quality') return <QualityDesk />;
+  if (at === 'autofile') return <AutoFileDesk />;
   if (at === 'registry') return <RegistryApp />;
   if (at === 'board') return <CasesBoard />;
   return <TikApp />;
