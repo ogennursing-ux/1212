@@ -58,9 +58,10 @@ function Shell() {
   }, []);
 
   const view = pick(at);
-  // The public customer chat stays unbranded; every office screen gets the
-  // "ניהול בקליק" logo bar on top.
-  if (at === 'chat') return view;
+  // The public customer chat stays unbranded; the registry carries its own
+  // "ניהול בקליק" logo header, so the top bar is only for the other office
+  // screens.
+  if (at === 'chat' || at === 'registry') return view;
   return <><BrandBar />{view}</>;
 }
 
