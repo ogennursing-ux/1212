@@ -10,6 +10,7 @@ import Invoicing from './Invoicing.jsx';
 import ManotDesk from './ManotDesk.jsx';
 import AssistantDesk from './AssistantDesk.jsx';
 import ContractTemplates from './ContractTemplates.jsx';
+import QualityDesk from './QualityDesk.jsx';
 import './index.css';
 
 document.documentElement.lang = 'he';
@@ -46,6 +47,7 @@ function Shell() {
   if (at === 'manot') return <ManotDesk />;
   if (at === 'assistant') return <AssistantDesk />;
   if (at === 'templates') return <ContractTemplates />;
+  if (at === 'quality') return <QualityDesk />;
   if (at === 'registry') return <RegistryApp />;
   if (at === 'board') return <CasesBoard />;
   return <TikApp />;
